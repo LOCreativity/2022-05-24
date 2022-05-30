@@ -8,32 +8,27 @@ public class StackManager {
 		String [] arr = ob.split(" ");
 		
 		StringStack stack = new StringStack(arr.length);
-		int len = stack.length();
-		//¹®ÀÚ¿­À» ÀÔ·Â¹Ş°í push·Î ¹®ÀÚ¿­ stack¿¡ ÀúÀå
+	
+		//ë¬¸ìì—´ì„ ì…ë ¥ë°›ê³  pushë¡œ ë¬¸ìì—´ stackì— ì €ì¥
 		
-		for(int i = 0; i < len; i++){
+		for(int i = 0; i < arr.length; i++){
 			if(!stack.push(arr[i])) {
-				System.out.println("Á¤ÇØÁø ½ºÅÃÀÇ ÇÑ°èÄ¡¿¡ µµ´ŞÇß½À´Ï´Ù.");
+				System.out.println("ì •í•´ì§„ ìŠ¤íƒì˜ í•œê³„ì¹˜ì— ë„ë‹¬í–ˆìŠµë‹ˆë‹¤.");
 				break;
 			}
 			
 		}
 		
-		//pop¿¡ ÀÇÇØ stack¿¡ ÀúÀåµÈ ¿ª¼øÀ¸·Î s Ãâ·Â
-		for(int i = 0; i < len ; i ++) {
-			if(len < i) {
-				System.out.println("ÃÖ´ë ¼ö¿ë °¡´É ÀÎµ¦½º°ªÀ» ³Ñ¾ú½À´Ï´Ù.");
-				break;
-			}
-			String s= stack.pop();
-			System.out.print(s + " ");
-		}
-		/*
+		//popì— ì˜í•´ stackì— ì €ì¥ëœ ì—­ìˆœìœ¼ë¡œ s ì¶œë ¥
 		for(int i = 0; i < stack.length() ; i ++) {
 			String s= stack.pop();
+			if(s == null){
+				System.out.println("ìŠ¤íƒì´ ë¹„ì–´ìˆìŠµë‹ˆë‹¤.");
+				break;
+			}
 			System.out.print(s + " ");
 		}
-		*/
+		
 		st.close();
 	}
 }
