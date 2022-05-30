@@ -1,35 +1,38 @@
 class StringStack extends stack{
 	
-	private int num; //µ¥ÀÌÅÍ °³¼ö
-	private int index;
+	private int count = 0; //ë°ì´í„° ê°œìˆ˜
+	private int num;
+	private int top = -1;
 	private String[] stack;
 	
 	public StringStack(int num) {
 		this.num = num;
-		this.index = 0;
 		this.stack = new String[num];
 	}
-	//µ¥ÀÌÅÍÀÇ °³¼ö¸¦ Ãâ·Â ¼öÁ¤
+	//ë°ì´í„°ì˜ ê°œìˆ˜ë¥¼ ì¶œë ¥ ìˆ˜ì •
 	int length() {
-		return this.num;
+		return this.count;
 	}
-	//ÆËÀÇ index¿Í pushÀÇ index°¡ ´Ù¸¦ °æ¿ì ¼öÁ¤(¸ğ¸£°ÚÀ½)
+	//íŒì˜ indexì™€ pushì˜ indexê°€ ë‹¤ë¥¼ ê²½ìš° ìˆ˜ì •(ëª¨ë¥´ê² ìŒ)
 	String pop() {
-		// stack¹è¿­ ¹İ´ë¼øÀ¸·Î Ãâ·Â
-		//this.num = this.index;
-		this.index--;
-		String s = this.stack[this.index];
-		return s;
-			
+		// stackë°°ì—´ ë°˜ëŒ€ìˆœìœ¼ë¡œ ì¶œë ¥
+		if(!(this.top == -1)) {
+			String s = this.stack[this.top--];
+			return s;
+		}
+		else
+			return null;
 	}
 	boolean push(String ob) {
-		//ÀÔ·ÂµÈ ¹®ÀÚ¿­ stack¹è¿­¿¡ ÀúÀå
-		if(this.index < this.num) {
-			this.stack[this.index] = ob;
-			this.index++;
+		//ì…ë ¥ëœ ë¬¸ìì—´ stackë°°ì—´ì— ì €ì¥
+		if(!(this.top == this.num - 1)) {
+			this.stack[++this.top] = ob;
+			if(!ob.equals(null))
+				this.count++;
 			return true;
 		}
 		else
 			return false;
+		
 	}
 }
