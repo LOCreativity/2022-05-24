@@ -1,8 +1,7 @@
 class StringStack extends stack{
 	
-	private int count = 0; //데이터 개수
 	private int num;
-	private int top = -1;
+	private int top = 0;
 	private String[] stack;
 	
 	public StringStack(int num) {
@@ -11,13 +10,12 @@ class StringStack extends stack{
 	}
 	//데이터의 개수를 출력 수정
 	int length() {
-		return this.count;
+		return this.top;
 	}
-	//팝의 index와 push의 index가 다를 경우 수정(모르겠음)
 	String pop() {
 		// stack배열 반대순으로 출력
-		if(!(this.top == -1)) {
-			String s = this.stack[this.top--];
+		if(!(this.top <= 0)) {
+			String s = this.stack[--this.top];
 			return s;
 		}
 		else
@@ -25,10 +23,8 @@ class StringStack extends stack{
 	}
 	boolean push(String ob) {
 		//입력된 문자열 stack배열에 저장
-		if(!(this.top == this.num - 1)) {
-			this.stack[++this.top] = ob;
-			if(!ob.equals(null))
-				this.count++;
+		if(!(this.top >= this.num)) {
+			this.stack[this.top++] = ob;
 			return true;
 		}
 		else
